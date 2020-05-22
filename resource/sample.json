@@ -1,0 +1,345 @@
+"https://swarfarm.com/static/herders/images/monsters/{unit_icon_0052_0_0.png}"
+
+({
+  "url": "https://swarfarm.com/api/bestiary/1209?format=json",
+  "pk": 1209,
+  "com2us_id": 22311,
+  "name": "Abellio",
+  "image_filename": "unit_icon_0052_0_0.png",
+  "element": "Water",
+  "archetype": "Defense",
+  "base_stars": 6,
+  "natural_stars": 5,
+  "obtainable": false,
+  "can_awaken": true,
+  "is_awakened": false,
+  "awaken_bonus": "",
+  "skills": [
+    {
+      "pk": 2036,
+      "com2us_id": 12946,
+      "name": "Touch of Punishment",
+      "description": "Attacks an enemy and stuns the target for 1 turn with a 35% chance.",
+      "slot": 1,
+      "cooltime": null,
+      "hits": 1,
+      "passive": false,
+      "max_level": 5,
+      "level_progress_description": "Damage +5%\nEffect Rate +5%\nDamage +10%\nEffect Rate +10%",
+      "skill_effect": [
+        {
+          "name": "Stun",
+          "is_buff": false,
+          "description": "Enemy is stunned and immobilized for a number of turns",
+          "icon_filename": "debuff_stun.png"
+        }
+      ],
+      "multiplier_formula": "3.8*{ATK}",
+      "multiplier_formula_raw": "[[\"ATK\", \"*\", 3.8]]",
+      "icon_filename": "skill_icon_0017_8_3.png"
+    },
+    {
+      "pk": 2016,
+      "com2us_id": 12926,
+      "name": "Wild Blow",
+      "description": "Attacks an enemy to inflict damage that increases according to your Defense and recovers 30% of the inflicted damage as HP. In addition, when used in Beast Form, the damage you inflict will be increased by 20% and then transforms into Druid Form.",
+      "slot": 2,
+      "cooltime": 3,
+      "hits": 1,
+      "passive": false,
+      "max_level": 6,
+      "level_progress_description": "Damage +5%\nDamage +10%\nDamage +10%\nDamage +15%\nCooltime Turn -1",
+      "skill_effect": [
+        {
+          "name": "Self-Heal",
+          "is_buff": true,
+          "description": "Heal that affects only the monster who cast the skill",
+          "icon_filename": ""
+        }
+      ],
+      "multiplier_formula": "4.0*{ATK} + 4.0*{DEF}",
+      "multiplier_formula_raw": "[[\"ATK\", \"*\", 4.0], [\"+\"], [\"DEF\", \"*\", 4.0]]",
+      "icon_filename": "skill_icon_0017_3_4.png"
+    },
+    {
+      "pk": 2021,
+      "com2us_id": 12931,
+      "name": "Wild Cure",
+      "description": "Recovers HP of all allies by 30%. In addition, when used in Druid Form, increases the Attack Bar of all allies by 15% and then transforms into Beast Form to Provoke all enemies for 1 turn with a 50% chance.",
+      "slot": 3,
+      "cooltime": 5,
+      "hits": 0,
+      "passive": false,
+      "max_level": 5,
+      "level_progress_description": "Recovery +5%\nRecovery +10%\nRecovery +15%\nCooltime Turn -1",
+      "skill_effect": [
+        {
+          "name": "AOE",
+          "is_buff": true,
+          "description": "Applies skill to more than one target",
+          "icon_filename": ""
+        },
+        {
+          "name": "Heal",
+          "is_buff": true,
+          "description": "Increases ally's HP",
+          "icon_filename": ""
+        },
+        {
+          "name": "Increase ATB",
+          "is_buff": true,
+          "description": "The ATK bar of ally monsters is filled by a set amount. This allows ally monsters to attack again sooner.",
+          "icon_filename": ""
+        },
+        {
+          "name": "Provoke",
+          "is_buff": false,
+          "description": "The monster is forced to only attack the monster which applied the effect",
+          "icon_filename": "debuff_provoke.png"
+        }
+      ],
+      "multiplier_formula": "",
+      "multiplier_formula_raw": "[]",
+      "icon_filename": "skill_icon_0017_8_4.png"
+    },
+    {
+      "pk": 2031,
+      "com2us_id": 12941,
+      "name": "Endurance of Beast (Passive)",
+      "description": "Increases your Attack Bar by 15% when you're attacked. Also recovers the HP of all allies by 10% every turn. [Automatic Effect]",
+      "slot": 4,
+      "cooltime": null,
+      "hits": 1,
+      "passive": true,
+      "max_level": 1,
+      "level_progress_description": "",
+      "skill_effect": [
+        {
+          "name": "Heal",
+          "is_buff": true,
+          "description": "Increases ally's HP",
+          "icon_filename": ""
+        },
+        {
+          "name": "Increase ATB",
+          "is_buff": true,
+          "description": "The ATK bar of ally monsters is filled by a set amount. This allows ally monsters to attack again sooner.",
+          "icon_filename": ""
+        }
+      ],
+      "multiplier_formula": "",
+      "multiplier_formula_raw": "[]",
+      "icon_filename": "skill_icon_0017_8_5.png"
+    }
+  ],
+  "leader_skill": null,
+  "homunculus_skills": [],
+  "base_hp": 10545,
+  "base_attack": 692,
+  "base_defense": 747,
+  "speed": 99,
+  "crit_rate": 15,
+  "crit_damage": 50,
+  "resistance": 15,
+  "accuracy": 0,
+  "max_lvl_hp": 10545,
+  "max_lvl_attack": 692,
+  "max_lvl_defense": 747,
+  "awakens_from": null,
+  "awakens_to": null,
+  "awaken_mats_fire_low": 0,
+  "awaken_mats_fire_mid": 0,
+  "awaken_mats_fire_high": 0,
+  "awaken_mats_water_low": 0,
+  "awaken_mats_water_mid": 0,
+  "awaken_mats_water_high": 0,
+  "awaken_mats_wind_low": 0,
+  "awaken_mats_wind_mid": 0,
+  "awaken_mats_wind_high": 0,
+  "awaken_mats_light_low": 0,
+  "awaken_mats_light_mid": 0,
+  "awaken_mats_light_high": 0,
+  "awaken_mats_dark_low": 0,
+  "awaken_mats_dark_mid": 0,
+  "awaken_mats_dark_high": 0,
+  "awaken_mats_magic_low": 0,
+  "awaken_mats_magic_mid": 0,
+  "awaken_mats_magic_high": 0,
+  "source": [],
+  "fusion_food": false,
+  "homunculus": false
+},
+{
+  "url": "https://swarfarm.com/api/bestiary/1204?format=json",
+  "pk": 1204,
+  "com2us_id": 22211,
+  "name": "Abellio",
+  "image_filename": "unit_icon_0046_0_2.png",
+  "element": "Water",
+  "archetype": "Defense",
+  "base_stars": 6,
+  "natural_stars": 5,
+  "obtainable": true,
+  "can_awaken": true,
+  "is_awakened": true,
+  "awaken_bonus": "",
+  "skills": [
+    {
+      "pk": 1991,
+      "com2us_id": 12901,
+      "name": "Touch of Punishment",
+      "description": "Attacks an enemy and stuns the target for 1 turn with a 35% chance.",
+      "slot": 1,
+      "cooltime": null,
+      "hits": 1,
+      "passive": false,
+      "max_level": 5,
+      "level_progress_description": "Damage +5%\nEffect Rate +5%\nDamage +10%\nEffect Rate +10%",
+      "skill_effect": [
+        {
+          "name": "Stun",
+          "is_buff": false,
+          "description": "Enemy is stunned and immobilized for a number of turns",
+          "icon_filename": "debuff_stun.png"
+        }
+      ],
+      "multiplier_formula": "3.8*{ATK}",
+      "multiplier_formula_raw": "[[\"ATK\", \"*\", 3.8]]",
+      "icon_filename": "skill_icon_0017_3_2.png"
+    },
+    {
+      "pk": 2006,
+      "com2us_id": 12916,
+      "name": "Wild Blow",
+      "description": "Attacks an enemy to inflict damage that increases according to your Defense and recovers 30% of the inflicted damage as HP. In addition, when used in Beast Form, the damage you inflict will be increased by 20% and then transforms into Druid Form.",
+      "slot": 2,
+      "cooltime": 3,
+      "hits": 1,
+      "passive": false,
+      "max_level": 6,
+      "level_progress_description": "Damage +5%\nDamage +10%\nDamage +10%\nDamage +15%\nCooltime Turn -1",
+      "skill_effect": [
+        {
+          "name": "Self-Heal",
+          "is_buff": true,
+          "description": "Heal that affects only the monster who cast the skill",
+          "icon_filename": ""
+        }
+      ],
+      "multiplier_formula": "4.0*{ATK} + 4.0*{DEF}",
+      "multiplier_formula_raw": "[[\"ATK\", \"*\", 4.0], [\"+\"], [\"DEF\", \"*\", 4.0]]",
+      "icon_filename": "skill_icon_0017_8_2.png"
+    },
+    {
+      "pk": 2011,
+      "com2us_id": 12921,
+      "name": "Wild Cure",
+      "description": "Recovers HP of all allies by 30%. In addition, when used in Druid Form, increases the Attack Bar of all allies by 15% and then transforms into Beast Form to Provoke all enemies for 1 turn with a 50% chance.",
+      "slot": 3,
+      "cooltime": 5,
+      "hits": 1,
+      "passive": false,
+      "max_level": 5,
+      "level_progress_description": "Recovery +5%\nRecovery +10%\nRecovery +15%\nCooltime Turn -1",
+      "skill_effect": [
+        {
+          "name": "AOE",
+          "is_buff": true,
+          "description": "Applies skill to more than one target",
+          "icon_filename": ""
+        },
+        {
+          "name": "Heal",
+          "is_buff": true,
+          "description": "Increases ally's HP",
+          "icon_filename": ""
+        },
+        {
+          "name": "Increase ATB",
+          "is_buff": true,
+          "description": "The ATK bar of ally monsters is filled by a set amount. This allows ally monsters to attack again sooner.",
+          "icon_filename": ""
+        },
+        {
+          "name": "Provoke",
+          "is_buff": false,
+          "description": "The monster is forced to only attack the monster which applied the effect",
+          "icon_filename": "debuff_provoke.png"
+        }
+      ],
+      "multiplier_formula": "",
+      "multiplier_formula_raw": "[]",
+      "icon_filename": "skill_icon_0017_3_3.png"
+    },
+    {
+      "pk": 2026,
+      "com2us_id": 12936,
+      "name": "Druid's Wit (Passive)",
+      "description": "Increases your Attack Bar by 100% if an ally's HP falls below 30% from an attack. [Automatic Effect]",
+      "slot": 4,
+      "cooltime": null,
+      "hits": 1,
+      "passive": true,
+      "max_level": 1,
+      "level_progress_description": "",
+      "skill_effect": [
+        {
+          "name": "Auto Effect",
+          "is_buff": true,
+          "description": "The skill effect is automatically triggered.",
+          "icon_filename": ""
+        },
+        {
+          "name": "Increase ATB",
+          "is_buff": true,
+          "description": "The ATK bar of ally monsters is filled by a set amount. This allows ally monsters to attack again sooner.",
+          "icon_filename": ""
+        }
+      ],
+      "multiplier_formula": "",
+      "multiplier_formula_raw": "[]",
+      "icon_filename": "skill_icon_0017_3_5.png"
+    }
+  ],
+  "leader_skill": null,
+  "homunculus_skills": [],
+  "base_hp": 10545,
+  "base_attack": 692,
+  "base_defense": 747,
+  "speed": 99,
+  "crit_rate": 15,
+  "crit_damage": 50,
+  "resistance": 15,
+  "accuracy": 0,
+  "max_lvl_hp": 10545,
+  "max_lvl_attack": 692,
+  "max_lvl_defense": 747,
+  "awakens_from": {
+    "url": "https://swarfarm.com/api/bestiary/1199?format=json",
+    "pk": 1199,
+    "name": "Druid",
+    "element": "Water"
+  },
+  "awakens_to": null,
+  "awaken_mats_fire_low": 0,
+  "awaken_mats_fire_mid": 0,
+  "awaken_mats_fire_high": 0,
+  "awaken_mats_water_low": 0,
+  "awaken_mats_water_mid": 0,
+  "awaken_mats_water_high": 0,
+  "awaken_mats_wind_low": 0,
+  "awaken_mats_wind_mid": 0,
+  "awaken_mats_wind_high": 0,
+  "awaken_mats_light_low": 0,
+  "awaken_mats_light_mid": 0,
+  "awaken_mats_light_high": 0,
+  "awaken_mats_dark_low": 0,
+  "awaken_mats_dark_mid": 0,
+  "awaken_mats_dark_high": 0,
+  "awaken_mats_magic_low": 0,
+  "awaken_mats_magic_mid": 0,
+  "awaken_mats_magic_high": 0,
+  "source": [],
+  "fusion_food": false,
+  "homunculus": false
+})
