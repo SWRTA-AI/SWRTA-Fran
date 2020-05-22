@@ -65,14 +65,16 @@ def predict_ban_01():
 
     if input_json["type"] == "id":
         pred = model_ban_01.predict_banned_id(input_json["team"], input_json["opponent"])
+        result = output_formatter.format_ban_id(pred)
 
     elif input_json["type"] == "name":
         pred = model_ban_01.predict_banned_name(input_json["team"], input_json["opponent"])
+        result = output_formatter.format_ban_name(pred)
 
     else:
         abort(400)
 
-    return {"result": pred}
+    return {"result": result}
 
 
 @app.route('/api/predictor/ban/v2/', methods=['POST'])
@@ -82,14 +84,16 @@ def predict_ban_02():
 
     if input_json["type"] == "id":
         pred = model_ban_02.predict_banned_id(input_json["team"], input_json["opponent"])
+        result = output_formatter.format_ban_id(pred)
 
     elif input_json["type"] == "name":
         pred = model_ban_02.predict_banned_name(input_json["team"], input_json["opponent"])
+        result = output_formatter.format_ban_name(pred)
 
     else:
         abort(400)
 
-    return {"result": pred}
+    return {"result": result}
 
 
 @app.route('/api/search', methods=['GET', 'POST'])

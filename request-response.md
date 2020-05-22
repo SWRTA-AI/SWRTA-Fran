@@ -6,13 +6,19 @@
 
 ### Request
 
-POST `http://localhost:8501/v1/models/predict_picks:predict`
+POST `http://localhost:5000/api/predictor/pick/`
 
 ```JSON
 {
-    "inputs": [
-        [  1,  21,  95,  97,   9,  34, 123,  17,  31, 104]
-    ]
+    "type": "id",
+    "input": [22213, 15713, 19114, 16615, 21112]
+}
+```
+
+```JSON
+{
+    "type": "name",
+    "input": ["Vanessa", "Giana", "Seara", "Fran", "Hathor", "Verdehile", "Barbara"]
 }
 ```
 
@@ -20,124 +26,96 @@ POST `http://localhost:8501/v1/models/predict_picks:predict`
 
 ```JSON
 {
-    "outputs": [
-        [
-            [
-                7.34826244e-07,
-                1.12060229e-06,
-                ...
-                8.07915114e-07,
-                1.19619401e-07
-            ],
-            ...
-            [
-                4.54428914e-07,
-                6.14794203e-07,
-                ...
-                7.38624237e-08
-            ]
-        ]
-    ]
-}
-```
-
-</details>
-
-## Predict bans 01
-
-<details>
-
-### Request
-
-POST `http://localhost:8501/v1/models/predict_bans_01:predict`
-
-```JSON
-{
-    "inputs": {
-        "input_team": [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-        "input_opponent": [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0]
-        ]
-    }
-}
-```
-
-### Response 200
-
-```JSON
-{
-    "outputs": [
-        [
-            3.27621663e-08,
-            8.23927859e-09,
-            6.92180819e-08,
-            ...
-            8.98059227e-09,
-            5.60902294e-08,
-            1.29447187e-07
-        ]
+    "result": [
+        {
+            "archetype": "Support",
+            "base_stars": 5,
+            "com2us_id": 21413,
+            "element": "Wind",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0043_2_2.png",
+            "name": "Triana",
+            "pk": 1030,
+            "score": 0.23579524457454681,
+            "url": "https://swarfarm.com/api/bestiary/1030?format=json"
+        },
+        {
+            "archetype": "Support",
+            "base_stars": 6,
+            "com2us_id": 17014,
+            "element": "Light",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0019_3_2.png",
+            "name": "Artamiel",
+            "pk": 695,
+            "score": 0.07925765216350555,
+            "url": "https://swarfarm.com/api/bestiary/695?format=json"
+        },
+        {
+            "archetype": "Support",
+            "base_stars": 6,
+            "com2us_id": 20513,
+            "element": "Wind",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0039_2_2.png",
+            "name": "Hathor",
+            "pk": 942,
+            "score": 0.06436343491077423,
+            "url": "https://swarfarm.com/api/bestiary/942?format=json"
+        },
+        {
+            "archetype": "Attack",
+            "base_stars": 6,
+            "com2us_id": 23511,
+            "element": "Water",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0054_0_0.png",
+            "name": "Barbara",
+            "natural_stars": 5,
+            "pk": 1339,
+            "score": 0.06321056932210922,
+            "url": "https://swarfarm.com/api/bestiary/1339?format=json"
+        },
+        {
+            "archetype": "Support",
+            "atbBoost": 30,
+            "base_stars": 6,
+            "com2us_id": 17012,
+            "element": "Fire",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0019_1_2.png",
+            "name": "Velajuel",
+            "pk": 268,
+            "score": 0.05273795127868652,
+            "url": "https://swarfarm.com/api/bestiary/268?format=json"
+        }
     ]
 }
 ```
 
 </details>
 
-## updateAnswerHandler
+## Predict ban 01 & 02
 
 <details>
 
 ### Request
 
-POST `http://localhost:8501/v1/models/predict_bans_02:predict`
+POST `http://localhost:5000/api/predictor/pick/`
 
 ```JSON
 {
-    "inputs": {
-        "input_team": [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0]
-        ],
-        "input_opponent": [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0]
-        ]
-    }
+    "type":"id",
+    "team": [22213, 15713, 19114, 16615, 21112],
+    "opponent": [22212, 15712, 16614, 16611, 21113]
+}
+```
+
+```JSON
+{
+    "type": "name",
+    "opponent": ["Vanessa", "Hathor", "Ragdoll", "Artamiel", "Fran"],
+    "team": ["Ganymede", "Daphnis", "Masha", "Barbara", "Verdehile"]
 }
 ```
 
@@ -145,10 +123,69 @@ POST `http://localhost:8501/v1/models/predict_bans_02:predict`
 
 ```JSON
 {
-    "outputs": [
-        [
-            0.31157434
-        ]
+    "result": [
+        {
+            "archetype": "Support",
+            "base_stars": 5,
+            "com2us_id": 21413,
+            "element": "Wind",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0043_2_2.png",
+            "name": "Triana",
+            "pk": 1030,
+            "score": 0.23579524457454681,
+            "url": "https://swarfarm.com/api/bestiary/1030?format=json"
+        },
+        {
+            "archetype": "Support",
+            "base_stars": 6,
+            "com2us_id": 17014,
+            "element": "Light",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0019_3_2.png",
+            "name": "Artamiel",
+            "pk": 695,
+            "score": 0.07925765216350555,
+            "url": "https://swarfarm.com/api/bestiary/695?format=json"
+        },
+        {
+            "archetype": "Support",
+            "base_stars": 6,
+            "com2us_id": 20513,
+            "element": "Wind",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0039_2_2.png",
+            "name": "Hathor",
+            "pk": 942,
+            "score": 0.06436343491077423,
+            "url": "https://swarfarm.com/api/bestiary/942?format=json"
+        },
+        {
+            "archetype": "Attack",
+            "base_stars": 6,
+            "com2us_id": 23511,
+            "element": "Water",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0054_0_0.png",
+            "name": "Barbara",
+            "natural_stars": 5,
+            "pk": 1339,
+            "score": 0.06321056932210922,
+            "url": "https://swarfarm.com/api/bestiary/1339?format=json"
+        },
+        {
+            "archetype": "Support",
+            "atbBoost": 30,
+            "base_stars": 6,
+            "com2us_id": 17012,
+            "element": "Fire",
+            "fusion_food": false,
+            "image_filename": "https://swarfarm.com/static/herders/images/monsters/unit_icon_0019_1_2.png",
+            "name": "Velajuel",
+            "pk": 268,
+            "score": 0.05273795127868652,
+            "url": "https://swarfarm.com/api/bestiary/268?format=json"
+        }
     ]
 }
 ```
