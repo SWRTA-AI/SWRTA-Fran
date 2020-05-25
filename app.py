@@ -39,11 +39,11 @@ def predict_pick():
     input_json = request.get_json()
 
     if input_json["type"] == "id":
-        preds, scores = model_pick.predict_next_picks_id(input_json["input"], k=5)
+        preds, scores = model_pick.predict_next_picks_id(input_json["input"], k=input_json["k"])
         result = output_formatter.format_pick_id(preds, scores)
 
     elif input_json["type"] == "name":
-        preds, scores = model_pick.predict_next_picks_name(input_json["input"], k=5)
+        preds, scores = model_pick.predict_next_picks_name(input_json["input"], k=input_json["k"])
         result = output_formatter.format_pick_name(preds, scores)
 
     else:

@@ -11,7 +11,7 @@ class PickPredictorModel:
     def __init__(self, tokenizer):
         self.tokenizer = tokenizer
 
-    def predict_next_picks_name(self, name_sequence, k=3):
+    def predict_next_picks_name(self, name_sequence, k=5):
 
         token_sequence = self.tokenizer.conv_name_to_token(name_sequence)
         picks, score = self.predict_next_picks_token(token_sequence, k)
@@ -19,7 +19,7 @@ class PickPredictorModel:
 
         return chosen_names, score
 
-    def predict_next_picks_id(self, id_sequence, k=3):
+    def predict_next_picks_id(self, id_sequence, k=5):
 
         token_sequence = self.tokenizer.conv_id_to_token(id_sequence)
         picks, score = self.predict_next_picks_token(token_sequence, k)
@@ -27,7 +27,7 @@ class PickPredictorModel:
 
         return chosen_ids, score
 
-    def predict_next_picks_token(self, token_sequence, k=3):
+    def predict_next_picks_token(self, token_sequence, k=5):
 
         if len(token_sequence) < 1 or token_sequence[0] != 1:
             token_sequence.insert(0, 1)
