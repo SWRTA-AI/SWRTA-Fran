@@ -1,5 +1,6 @@
 
 import pickle
+import numpy as np
 from flask import Flask, request, jsonify, abort
 from flask_cors import CORS
 
@@ -8,6 +9,7 @@ from src.model.tokenizer import Tokenizer
 from src.model.picks import PickPredictorModel
 from src.model.bans_01 import BanPredictorModel01
 from src.model.bans_02 import BanPredictorModel02
+from src.model.unitRelation import UnitRelationPredictor
 from src.util.bestiary import Bestiary
 from src.util.output_formatter import OutputFormatter
 
@@ -20,6 +22,20 @@ model_ban_01 = BanPredictorModel01(tokenizer)
 model_ban_02 = BanPredictorModel02(tokenizer)
 bestiary = Bestiary("resource/bestiary.json")
 output_formatter = OutputFormatter(bestiary)
+
+pick_together_matrix = np.load("pickle/pick_matrix.npy")
+counter_pick_matrix = np.load("pickle/counterpick_matrix.npy")
+log_pick_count = np.load("pickle/log_pick_count.npy")
+model_friend = UnitRelationPredictor(
+    tokenizer=tokenizer,
+    pick_matrix=pick_together_matrix,
+    log_pick_count=log_pick_count
+)
+model_counterpick = UnitRelationPredictor(
+    tokenizer=tokenizer,
+    pick_matrix=counter_pick_matrix,
+    log_pick_count=log_pick_count
+)
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -94,6 +110,30 @@ def predict_ban_02():
         abort(400)
 
     return {"result": result}
+
+
+@app.route('/api/predictor/<unit_id>/friend', methods=['GET'])
+def predict_friend(unit_id):
+
+    if unit_id is not None:
+        pred = model_friend.predict_id(int(unit_id))
+        result = output_formatter.format_relation_id(pred)
+        return {"result": result}
+
+    else:
+        abort(400)
+
+
+@app.route('/api/predictor/<unit_id>/counterpick', methods=['GET'])
+def predict_counterpick(unit_id):
+
+    if unit_id is not None:
+        pred = model_counterpick.predict_id(int(unit_id))
+        result = output_formatter.format_relation_id(pred)
+        return {"result": result}
+
+    else:
+        abort(400)
 
 
 @app.route('/api/search', methods=['GET', 'POST'])

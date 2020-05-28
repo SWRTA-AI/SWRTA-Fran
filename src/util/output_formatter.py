@@ -45,3 +45,6 @@ class OutputFormatter:
             result.append(info)
 
         return result
+
+    def format_relation_id(self, pred):
+        return [self.bestiary.get_info(x) for x in pred]
