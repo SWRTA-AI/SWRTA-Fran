@@ -84,7 +84,7 @@ def predict_ban_02():
     return {"result": result}
 
 
-@app.route('/api/predictor/<unit_id>/friend', methods=['GET'])
+@app.route('/api/predictor/friend/<unit_id>', methods=['GET'])
 def predict_friend(unit_id):
 
     if unit_id is not None:
@@ -96,7 +96,7 @@ def predict_friend(unit_id):
         abort(400)
 
 
-@app.route('/api/predictor/<unit_id>/counterpick', methods=['GET'])
+@app.route('/api/predictor/counterpick/<unit_id>', methods=['GET'])
 def predict_counterpick(unit_id):
 
     if unit_id is not None:
