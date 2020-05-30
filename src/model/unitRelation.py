@@ -1,6 +1,5 @@
 
 import numpy as np
-import tensorflow as tf
 
 
 class UnitRelationPredictor:
@@ -11,8 +10,8 @@ class UnitRelationPredictor:
         self.log_pick_count = log_pick_count
 
     def predict_token(self, unit_token, k=5):
-        _, index = tf.math.top_k((self.pick_matrix[unit_token] * self.log_pick_count), k)
-        index = index[0].numpy().tolist()
+        score = -(self.pick_matrix[unit_token] * self.log_pick_count)[0]
+        index = np.argpartition(score, k)[:k].tolist()
         return index
 
     def predict_name(self, unit_name, k=5):

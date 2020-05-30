@@ -132,5 +132,10 @@ def search_name_POST(request):
     return {"result": result}
 
 
+@app.route('/ping', methods=['GET', 'POST'])
+def ping():
+    return 'pong!'
+
+
 if __name__ == "__main__":
-    app.run()
+    app.run(port=5000)

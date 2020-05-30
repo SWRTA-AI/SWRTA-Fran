@@ -1,6 +1,5 @@
 
 import numpy as np
-import tensorflow as tf
 from keras.preprocessing.sequence import pad_sequences
 
 from ..client import tf_serving
@@ -37,11 +36,17 @@ class PickPredictorModel:
 
         y_pred = tf_serving.predict_picks(x_input)[0][len(token_sequence) - 1]
 
-        score, sampled_ids = tf.math.top_k(y_pred, k=k*2)
-        sampled_ids = [x for x in sampled_ids.numpy() if x not in token_sequence]
+        sampled_ids = np.argpartition(-np.array(y_pred), k*2)[:k*2]
+        sampled_scores = -(np.partition(-np.array(y_pred), k*2))[:k*2]
 
-        chosen_token = sampled_ids[:k]
-        chosen_score = score[:k].numpy().tolist()
+        chosen_token = []
+        chosen_score = []
+        for i in range(k*2):
+            if sampled_ids[i] not in token_sequence:
+                chosen_token.append(sampled_ids[i])
+                chosen_score.append(sampled_scores[i])
+            if len(chosen_token) >= k:
+                break
 
         return chosen_token, chosen_score
 
