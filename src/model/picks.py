@@ -1,5 +1,6 @@
 
 import numpy as np
+import tensorflow as tf
 from keras.preprocessing.sequence import pad_sequences
 
 from ..client import tf_serving
