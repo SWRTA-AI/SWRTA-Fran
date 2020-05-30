@@ -18,11 +18,12 @@ RUN apt-get update && \
 
 # Upgrade pip
 RUN pip install --upgrade pip
-# RUN pip install numpy scipy
-
-# packages that we need
 RUN pip install -r requirements.txt 
 
+ENV TF_SERVING_URL=http://localhost:8501/v1/models
+ENV SWARMFARM_URL=https://swarfarm.com
+
 EXPOSE 5000 
+
 ENTRYPOINT [ "python" ] 
 CMD [ "app.py" ] 
