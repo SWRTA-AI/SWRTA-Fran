@@ -7,8 +7,6 @@ load_dotenv()
 
 class Bestiary:
 
-    SWARMFARM_URL = environ.get('SWARMFARM_URL')
-
     def __init__(self, path):
 
         self.bestiary = None
@@ -29,7 +27,7 @@ class Bestiary:
         for unit in self.bestiary:
 
             # add link prefix
-            unit["image_filename"] = "{}/static/herders/images/monsters/{}".format(self.SWARMFARM_URL, unit["image_filename"])
+            unit["image_filename"] = "{}/static/herders/images/monsters/{}".format(environ.get('SWARMFARM_URL'), unit["image_filename"])
 
             unit_id = unit["com2us_id"]
             unit_name = unit["name"].lower()

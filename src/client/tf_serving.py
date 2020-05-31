@@ -6,12 +6,10 @@ from os import environ
 from dotenv import load_dotenv
 load_dotenv()
 
-TF_SERVING_URL = environ.get('TF_SERVING_URL')
-
 
 def predict_picks(inputs):
 
-    r = requests.post(TF_SERVING_URL + "/predict_picks:predict", json={
+    r = requests.post(environ.get('TF_SERVING_URL') + "/predict_picks:predict", json={
         "inputs": inputs
     })
 
@@ -21,7 +19,7 @@ def predict_picks(inputs):
 
 def predict_bans_01(input_team, input_opponent):
 
-    r = requests.post(TF_SERVING_URL + "/predict_bans_01:predict", json={
+    r = requests.post(environ.get('TF_SERVING_URL') + "/predict_bans_01:predict", json={
         "inputs": {
             "input_team": input_team,
             "input_opponent": input_opponent
@@ -34,7 +32,7 @@ def predict_bans_01(input_team, input_opponent):
 
 def predict_bans_02(input_team, input_opponent):
 
-    r = requests.post(TF_SERVING_URL + "/predict_bans_02:predict", json={
+    r = requests.post(environ.get('TF_SERVING_URL') + "/predict_bans_02:predict", json={
         "inputs": {
             "input_team": input_team,
             "input_opponent": input_opponent
