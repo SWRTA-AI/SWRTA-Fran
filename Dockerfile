@@ -20,9 +20,6 @@ RUN apt-get update && \
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt 
 
-ENV TF_SERVING_URL=http://localhost:8501/v1/models
-ENV SWARMFARM_URL=https://swarfarm.com
-
 EXPOSE 5000 
 
 ENTRYPOINT [ "python" ] 
