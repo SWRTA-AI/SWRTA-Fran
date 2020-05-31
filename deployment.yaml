@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: swrta-api
+  name: swrta-api
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: swrta-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: swrta-api
+    spec:
+      containers:
+        - env:
+            - name: SWARMFARM_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: SWARMFARM_URL
+                  name: swrta-api-config-5mzh
+            - name: TF_SERVING_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: TF_SERVING_URL
+                  name: swrta-api-config-5mzh
+          image: gcr.io/swrta-278814/github.com/jessinra/swrta-fran
+          imagePullPolicy: IfNotPresent
+          name: swrta-fran
+---
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  labels:
+    app: swrta-api
+  name: swrta-api-hpa-73rc
+  namespace: default
+spec:
+  maxReplicas: 3
+  metrics:
+    - resource:
+        name: cpu
+        targetAverageUtilization: 80
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: swrta-api
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: swrta-api
+  name: swrta-api-service
+  namespace: default
+spec:
+  clusterIP: 10.36.11.145
+  externalTrafficPolicy: Cluster
+  ports:
+    - nodePort: 31401
+      port: 5000
+      protocol: TCP
+      targetPort: 5000
+  selector:
+    app: swrta-api
+  sessionAffinity: None
+  type: LoadBalancer
