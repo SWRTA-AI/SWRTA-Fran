@@ -2,15 +2,15 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: swrta-api
-  name: swrta-api
+    app: swrta-fran
+  name: swrta-fran
   namespace: default
 spec:
   replicas: 1
-  revisionHistoryLimit: 1
+  revisionHistoryLimit: 2
   selector:
     matchLabels:
-      app: swrta-api
+      app: swrta-fran
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -19,33 +19,33 @@ spec:
   template:
     metadata:
       labels:
-        app: swrta-api
+        app: swrta-fran
     spec:
       containers:
         - env:
-            - name: SWARMFARM_URL
-              valueFrom:
-                configMapKeyRef:
-                  key: SWARMFARM_URL
-                  name: swrta-api-config-5mzh
             - name: TF_SERVING_URL
               valueFrom:
                 configMapKeyRef:
                   key: TF_SERVING_URL
-                  name: swrta-api-config-5mzh
-          image: gcr.io/swrta-278814/github.com/jessinra/swrta-fran
+                  name: swrta-fran-config-vixj
+            - name: SWARMFARM_URL
+              valueFrom:
+                configMapKeyRef:
+                  key: SWARMFARM_URL
+                  name: swrta-fran-config-vixj
+          image: gcr.io/swrta-278814/github_jessinra_swrta-fran
           imagePullPolicy: IfNotPresent
-          name: swrta-fran
+          name: swrta-fran-1
 ---
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   labels:
-    app: swrta-api
-  name: swrta-api-hpa-73rc
+    app: swrta-fran
+  name: swrta-fran-hpa-cslo
   namespace: default
 spec:
-  maxReplicas: 3
+  maxReplicas: 2
   metrics:
     - resource:
         name: cpu
@@ -55,24 +55,24 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: swrta-api
+    name: swrta-fran
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: swrta-api
-  name: swrta-api-service
+    app: swrta-fran
+  name: swrta-fran-service
   namespace: default
 spec:
-  clusterIP: 10.36.11.145
+  clusterIP: 10.36.5.113
   externalTrafficPolicy: Cluster
   ports:
-    - nodePort: 31401
+    - nodePort: 31301
       port: 5000
       protocol: TCP
       targetPort: 5000
   selector:
-    app: swrta-api
+    app: swrta-fran
   sessionAffinity: None
   type: LoadBalancer
