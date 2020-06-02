@@ -75,4 +75,4 @@ spec:
   selector:
     app: swrta-fran
   sessionAffinity: None
-  type: LoadBalancer
+  type: NodePort

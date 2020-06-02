@@ -19,15 +19,18 @@ output_formatter = OutputFormatter(bestiary)
 pick_together_matrix = np.load("pickle/pick_matrix.npy")
 counter_pick_matrix = np.load("pickle/counterpick_matrix.npy")
 log_pick_count = np.load("pickle/log_pick_count.npy")
+pick_count = np.load("pickle/pick_count.npy")
 
 model_friend = UnitRelationPredictor(
     tokenizer=tokenizer,
     pick_matrix=pick_together_matrix,
+    pick_count=pick_count,
     log_pick_count=log_pick_count
 )
 
 model_counterpick = UnitRelationPredictor(
     tokenizer=tokenizer,
     pick_matrix=counter_pick_matrix,
+    pick_count=pick_count,
     log_pick_count=log_pick_count
 )

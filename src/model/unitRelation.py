@@ -4,12 +4,19 @@ import numpy as np
 
 class UnitRelationPredictor:
 
-    def __init__(self, tokenizer, pick_matrix, log_pick_count):
+    THRESHOLD = 150
+
+    def __init__(self, tokenizer, pick_matrix, pick_count, log_pick_count):
         self.tokenizer = tokenizer
         self.pick_matrix = pick_matrix
+        self.pick_count = pick_count
         self.log_pick_count = log_pick_count
 
     def predict_token(self, unit_token, k=5):
+
+        if self.pick_count[unit_token] < self.THRESHOLD:
+            return []
+
         score = -(self.pick_matrix[unit_token] * self.log_pick_count)[0]
         index = np.argpartition(score, k)[:k].tolist()
         return index
