@@ -54,18 +54,17 @@ images:
 options:
   substitutionOption: ALLOW_LOOSE
 substitutions:
+  _K8S_NAMESPACE: default
+  _IMAGE_NAME: gcr.io/swrta-278814/github_jessinra_swrta-fran
+  _DOCKERFILE_DIR: ''
+  _K8S_ANNOTATIONS: gcb-trigger-id=fe0089e5-51ba-4e15-9e44-a2d4c803b160
   _K8S_LABELS: ''
   _DOCKERFILE_NAME: Dockerfile
-  _K8S_NAMESPACE: default
   _GKE_CLUSTER: swrta-api
-  _K8S_APP_NAME: swrta-fran
-  _K8S_ANNOTATIONS: gcb-trigger-id=93d716e1-6128-4b51-8978-513a592de2be
-  _DOCKERFILE_DIR: ''
-  _IMAGE_NAME: gcr.io/swrta-278814/github_jessinra_swrta-fran
-  _OUTPUT_BUCKET_PATH: swrta-278814_cloudbuild/deploy
   _K8S_YAML_PATH: deployment.yaml
+  _K8S_APP_NAME: swrta-fran
   _GKE_LOCATION: us-east1-c
+  _OUTPUT_BUCKET_PATH: swrta-278814_cloudbuild/deploy
 tags:
   - gcp-cloud-build-deploy
   - $_K8S_APP_NAME
-timeout: 1200s

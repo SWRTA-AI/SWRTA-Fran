@@ -40,9 +40,7 @@ spec:
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  labels:
-    app: swrta-fran
-  name: swrta-fran-hpa-cslo
+  name: swrta-fran
   namespace: default
 spec:
   maxReplicas: 2
@@ -53,7 +51,7 @@ spec:
       type: Resource
   minReplicas: 1
   scaleTargetRef:
-    apiVersion: apps/v1
+    apiVersion: extensions/v1beta1
     kind: Deployment
     name: swrta-fran
 ---
@@ -65,10 +63,10 @@ metadata:
   name: swrta-fran-service
   namespace: default
 spec:
-  clusterIP: 10.36.5.113
+  clusterIP: 10.36.2.176
   externalTrafficPolicy: Cluster
   ports:
-    - nodePort: 31301
+    - nodePort: 32099
       port: 5000
       protocol: TCP
       targetPort: 5000
