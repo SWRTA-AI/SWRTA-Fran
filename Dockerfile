@@ -1,6 +1,6 @@
 
 # Pulling from base Python image
-FROM jessinra/swrta-fran:latest
+FROM jessinra/swrta-fran-base:latest
 
 # author of file
 LABEL maintainer="Jessinra"
