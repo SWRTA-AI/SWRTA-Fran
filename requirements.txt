@@ -1,6 +1,6 @@
 Keras==2.3.1
 Flask==1.1.2
-tensorflow==2.2.0
+tensorflow==2.6.4
 numpy==1.16.0
 requests==2.18.4
 Flask_Cors==3.0.8
